@@ -1,0 +1,1026 @@
+[gd_scene load_steps=49 format=2]
+
+[ext_resource path="res://Dnumpad.gd" type="Script" id=1]
+[ext_resource path="res://Circo-5xBj.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://DnumpadThemeStyle.tres" type="StyleBox" id=12]
+[ext_resource path="res://DnumpadThemePressed.tres" type="StyleBox" id=13]
+[ext_resource path="res://grabber.png" type="Texture" id=15]
+[ext_resource path="res://Panel.gd" type="Script" id=16]
+[ext_resource path="res://font.tres" type="DynamicFont" id=17]
+
+[sub_resource type="DynamicFont" id=1]
+size = 14
+font_data = ExtResource( 2 )
+
+[sub_resource type="Theme" id=2]
+default_font = SubResource( 1 )
+
+[sub_resource type="StyleBoxFlat" id=3]
+bg_color = Color( 0.152941, 0.121569, 0.121569, 1 )
+border_color = Color( 0.419608, 0.419608, 0.419608, 1 )
+
+[sub_resource type="StyleBoxFlat" id=4]
+bg_color = Color( 0.0117647, 0.537255, 0.196078, 1 )
+
+[sub_resource type="StyleBoxFlat" id=5]
+
+[sub_resource type="InputEventAction" id=6]
+action = "numdiv"
+
+[sub_resource type="ShortCut" id=7]
+shortcut = SubResource( 6 )
+
+[sub_resource type="InputEventAction" id=8]
+action = "numstar"
+
+[sub_resource type="ShortCut" id=9]
+shortcut = SubResource( 8 )
+
+[sub_resource type="InputEventAction" id=10]
+action = "numsub"
+
+[sub_resource type="ShortCut" id=11]
+shortcut = SubResource( 10 )
+
+[sub_resource type="StyleBoxFlat" id=12]
+bg_color = Color( 0.0588235, 0.384314, 0.0705882, 1 )
+
+[sub_resource type="StyleBoxFlat" id=13]
+
+[sub_resource type="InputEventAction" id=14]
+action = "kp7"
+
+[sub_resource type="ShortCut" id=15]
+shortcut = SubResource( 14 )
+
+[sub_resource type="InputEventAction" id=16]
+action = "kp8"
+
+[sub_resource type="ShortCut" id=17]
+shortcut = SubResource( 16 )
+
+[sub_resource type="InputEventAction" id=18]
+action = "kp9"
+
+[sub_resource type="ShortCut" id=19]
+shortcut = SubResource( 18 )
+
+[sub_resource type="InputEventAction" id=20]
+action = "numadd"
+
+[sub_resource type="ShortCut" id=21]
+shortcut = SubResource( 20 )
+
+[sub_resource type="InputEventAction" id=22]
+action = "kp4"
+
+[sub_resource type="ShortCut" id=23]
+shortcut = SubResource( 22 )
+
+[sub_resource type="InputEventAction" id=24]
+action = "kp5"
+
+[sub_resource type="ShortCut" id=25]
+shortcut = SubResource( 24 )
+
+[sub_resource type="InputEventAction" id=26]
+action = "kp6"
+
+[sub_resource type="ShortCut" id=27]
+shortcut = SubResource( 26 )
+
+[sub_resource type="StyleBoxFlat" id=41]
+bg_color = Color( 0.388235, 0.521569, 0.52549, 1 )
+
+[sub_resource type="StyleBoxEmpty" id=40]
+
+[sub_resource type="InputEventAction" id=28]
+action = "kp1"
+
+[sub_resource type="ShortCut" id=29]
+shortcut = SubResource( 28 )
+
+[sub_resource type="InputEventAction" id=30]
+action = "kp2"
+
+[sub_resource type="ShortCut" id=31]
+shortcut = SubResource( 30 )
+
+[sub_resource type="InputEventAction" id=32]
+action = "kp3"
+
+[sub_resource type="ShortCut" id=33]
+shortcut = SubResource( 32 )
+
+[sub_resource type="InputEventAction" id=34]
+action = "enter"
+
+[sub_resource type="ShortCut" id=35]
+shortcut = SubResource( 34 )
+
+[sub_resource type="InputEventAction" id=36]
+action = "kp0"
+
+[sub_resource type="ShortCut" id=37]
+shortcut = SubResource( 36 )
+
+[sub_resource type="InputEventAction" id=38]
+action = "del"
+
+[sub_resource type="ShortCut" id=39]
+shortcut = SubResource( 38 )
+
+[node name="Dnumpad" type="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = SubResource( 2 )
+custom_styles/panel = SubResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="KeypadControl" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="GainVisualiser" type="VBoxContainer" parent="KeypadControl"]
+margin_right = 400.0
+margin_bottom = 56.0
+
+[node name="MasterVolume" type="HSlider" parent="KeypadControl/GainVisualiser"]
+margin_right = 400.0
+margin_bottom = 32.0
+size_flags_vertical = 3
+custom_icons/grabber_highlight = ExtResource( 15 )
+custom_icons/grabber = ExtResource( 15 )
+min_value = -60.0
+max_value = 0.0
+
+[node name="LdB" type="ProgressBar" parent="KeypadControl/GainVisualiser"]
+margin_top = 36.0
+margin_right = 400.0
+margin_bottom = 44.0
+rect_min_size = Vector2( 0, 8 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/fg = SubResource( 4 )
+min_value = -60.0
+max_value = 0.0
+percent_visible = false
+
+[node name="RdB" type="ProgressBar" parent="KeypadControl/GainVisualiser"]
+margin_top = 48.0
+margin_right = 400.0
+margin_bottom = 56.0
+rect_min_size = Vector2( 0, 8 )
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_styles/fg = SubResource( 4 )
+min_value = -60.0
+max_value = 0.0
+percent_visible = false
+
+[node name="Row1" type="HBoxContainer" parent="KeypadControl"]
+margin_top = 60.0
+margin_right = 400.0
+margin_bottom = 174.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="NumLock" type="Button" parent="KeypadControl/Row1"]
+margin_right = 97.0
+margin_bottom = 114.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+text = "NumLock"
+
+[node name="Slash" type="Button" parent="KeypadControl/Row1"]
+margin_left = 101.0
+margin_right = 198.0
+margin_bottom = 114.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+shortcut = SubResource( 7 )
+text = "/"
+
+[node name="Star" type="Button" parent="KeypadControl/Row1"]
+margin_left = 202.0
+margin_right = 299.0
+margin_bottom = 114.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+shortcut = SubResource( 9 )
+text = "*"
+
+[node name="Minus" type="Button" parent="KeypadControl/Row1"]
+margin_left = 303.0
+margin_right = 400.0
+margin_bottom = 114.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+shortcut = SubResource( 11 )
+text = "-"
+
+[node name="Row2" type="HBoxContainer" parent="KeypadControl"]
+margin_top = 178.0
+margin_right = 400.0
+margin_bottom = 293.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="kp7" type="VBoxContainer" parent="KeypadControl/Row2"]
+margin_right = 97.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+
+[node name="LdB" type="ProgressBar" parent="KeypadControl/Row2/kp7"]
+margin_right = 97.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RdB" type="ProgressBar" parent="KeypadControl/Row2/kp7"]
+margin_top = 19.0
+margin_right = 97.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="b7" type="Button" parent="KeypadControl/Row2/kp7"]
+margin_top = 38.0
+margin_right = 97.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+shortcut_in_tooltip = false
+action_mode = 0
+shortcut = SubResource( 15 )
+text = "7"
+__meta__ = {
+"_editor_description_": "t"
+}
+
+[node name="kp8" type="VBoxContainer" parent="KeypadControl/Row2"]
+margin_left = 101.0
+margin_right = 198.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+
+[node name="LdB" type="ProgressBar" parent="KeypadControl/Row2/kp8"]
+margin_right = 97.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RdB" type="ProgressBar" parent="KeypadControl/Row2/kp8"]
+margin_top = 19.0
+margin_right = 97.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="b8" type="Button" parent="KeypadControl/Row2/kp8"]
+margin_top = 38.0
+margin_right = 97.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+shortcut_in_tooltip = false
+action_mode = 0
+shortcut = SubResource( 17 )
+text = "8"
+__meta__ = {
+"_editor_description_": "t"
+}
+
+[node name="kp9" type="VBoxContainer" parent="KeypadControl/Row2"]
+margin_left = 202.0
+margin_right = 299.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+
+[node name="LdB" type="ProgressBar" parent="KeypadControl/Row2/kp9"]
+margin_right = 97.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RdB" type="ProgressBar" parent="KeypadControl/Row2/kp9"]
+margin_top = 19.0
+margin_right = 97.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="b9" type="Button" parent="KeypadControl/Row2/kp9"]
+margin_top = 38.0
+margin_right = 97.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+shortcut_in_tooltip = false
+action_mode = 0
+shortcut = SubResource( 19 )
+text = "9"
+__meta__ = {
+"_editor_description_": "t"
+}
+
+[node name="Plus" type="Button" parent="KeypadControl/Row2"]
+margin_left = 303.0
+margin_right = 400.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+shortcut = SubResource( 21 )
+text = "+"
+
+[node name="Row3" type="HBoxContainer" parent="KeypadControl"]
+margin_top = 297.0
+margin_right = 400.0
+margin_bottom = 412.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="kp4" type="VBoxContainer" parent="KeypadControl/Row3"]
+margin_right = 97.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+
+[node name="LdB" type="ProgressBar" parent="KeypadControl/Row3/kp4"]
+margin_right = 97.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RdB" type="ProgressBar" parent="KeypadControl/Row3/kp4"]
+margin_top = 19.0
+margin_right = 97.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="b4" type="Button" parent="KeypadControl/Row3/kp4"]
+margin_top = 38.0
+margin_right = 97.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+shortcut_in_tooltip = false
+action_mode = 0
+shortcut = SubResource( 23 )
+text = "4"
+__meta__ = {
+"_editor_description_": "t"
+}
+
+[node name="kp5" type="VBoxContainer" parent="KeypadControl/Row3"]
+margin_left = 101.0
+margin_right = 198.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+
+[node name="LdB" type="ProgressBar" parent="KeypadControl/Row3/kp5"]
+margin_right = 97.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RdB" type="ProgressBar" parent="KeypadControl/Row3/kp5"]
+margin_top = 19.0
+margin_right = 97.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="b5" type="Button" parent="KeypadControl/Row3/kp5"]
+margin_top = 38.0
+margin_right = 97.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+shortcut_in_tooltip = false
+action_mode = 0
+shortcut = SubResource( 25 )
+text = "5"
+__meta__ = {
+"_editor_description_": "t"
+}
+
+[node name="kp6" type="VBoxContainer" parent="KeypadControl/Row3"]
+margin_left = 202.0
+margin_right = 299.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+
+[node name="LdB" type="ProgressBar" parent="KeypadControl/Row3/kp6"]
+margin_right = 97.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RdB" type="ProgressBar" parent="KeypadControl/Row3/kp6"]
+margin_top = 19.0
+margin_right = 97.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="b6" type="Button" parent="KeypadControl/Row3/kp6"]
+margin_top = 38.0
+margin_right = 97.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+shortcut_in_tooltip = false
+action_mode = 0
+shortcut = SubResource( 27 )
+text = "6"
+__meta__ = {
+"_editor_description_": "t"
+}
+
+[node name="Info" type="Panel" parent="KeypadControl/Row3"]
+margin_left = 303.0
+margin_right = 400.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+script = ExtResource( 16 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="V" type="VBoxContainer" parent="KeypadControl/Row3/Info"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PitchGFX" type="ProgressBar" parent="KeypadControl/Row3/Info/V"]
+margin_right = 97.0
+margin_bottom = 2.0
+custom_styles/bg = SubResource( 41 )
+max_value = 20.0
+value = 1.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label2" type="Label" parent="KeypadControl/Row3/Info/V"]
+margin_top = 6.0
+margin_right = 97.0
+margin_bottom = 20.0
+custom_fonts/font = ExtResource( 17 )
+custom_styles/normal = SubResource( 40 )
+text = "pitch:"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="KeypadControl/Row3/Info/V"]
+margin_top = 24.0
+margin_right = 97.0
+margin_bottom = 38.0
+custom_fonts/font = ExtResource( 17 )
+custom_styles/normal = SubResource( 40 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PitchGFX2" type="ProgressBar" parent="KeypadControl/Row3/Info/V"]
+margin_top = 42.0
+margin_right = 97.0
+margin_bottom = 44.0
+custom_styles/bg = SubResource( 41 )
+max_value = 20.0
+value = 1.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label3" type="Label" parent="KeypadControl/Row3/Info/V"]
+margin_top = 48.0
+margin_right = 97.0
+margin_bottom = 62.0
+custom_fonts/font = ExtResource( 17 )
+custom_styles/normal = SubResource( 40 )
+text = "delay"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label4" type="Label" parent="KeypadControl/Row3/Info/V"]
+margin_top = 66.0
+margin_right = 97.0
+margin_bottom = 80.0
+custom_fonts/font = ExtResource( 17 )
+custom_styles/normal = SubResource( 40 )
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Row4" type="HBoxContainer" parent="KeypadControl"]
+margin_top = 416.0
+margin_right = 400.0
+margin_bottom = 531.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="kp1" type="VBoxContainer" parent="KeypadControl/Row4"]
+margin_right = 97.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+
+[node name="LdB" type="ProgressBar" parent="KeypadControl/Row4/kp1"]
+margin_right = 97.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RdB" type="ProgressBar" parent="KeypadControl/Row4/kp1"]
+margin_top = 19.0
+margin_right = 97.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="b1" type="Button" parent="KeypadControl/Row4/kp1"]
+margin_top = 38.0
+margin_right = 97.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+shortcut_in_tooltip = false
+action_mode = 0
+shortcut = SubResource( 29 )
+text = "1"
+__meta__ = {
+"_editor_description_": "t"
+}
+
+[node name="kp2" type="VBoxContainer" parent="KeypadControl/Row4"]
+margin_left = 101.0
+margin_right = 198.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+
+[node name="LdB" type="ProgressBar" parent="KeypadControl/Row4/kp2"]
+margin_right = 97.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RdB" type="ProgressBar" parent="KeypadControl/Row4/kp2"]
+margin_top = 19.0
+margin_right = 97.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="b2" type="Button" parent="KeypadControl/Row4/kp2"]
+margin_top = 38.0
+margin_right = 97.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+shortcut_in_tooltip = false
+action_mode = 0
+shortcut = SubResource( 31 )
+text = "2"
+__meta__ = {
+"_editor_description_": "t"
+}
+
+[node name="kp3" type="VBoxContainer" parent="KeypadControl/Row4"]
+margin_left = 202.0
+margin_right = 299.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+
+[node name="LdB" type="ProgressBar" parent="KeypadControl/Row4/kp3"]
+margin_right = 97.0
+margin_bottom = 15.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RdB" type="ProgressBar" parent="KeypadControl/Row4/kp3"]
+margin_top = 19.0
+margin_right = 97.0
+margin_bottom = 34.0
+rect_min_size = Vector2( 0, 15 )
+size_flags_horizontal = 3
+size_flags_vertical = 1
+custom_styles/fg = SubResource( 12 )
+custom_styles/bg = SubResource( 13 )
+min_value = -60.0
+max_value = 0.0
+value = -60.0
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="b3" type="Button" parent="KeypadControl/Row4/kp3"]
+margin_top = 38.0
+margin_right = 97.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+shortcut_in_tooltip = false
+action_mode = 0
+shortcut = SubResource( 33 )
+text = "3"
+__meta__ = {
+"_editor_description_": "t"
+}
+
+[node name="kpEnter" type="VBoxContainer" parent="KeypadControl/Row4"]
+margin_left = 303.0
+margin_right = 400.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+
+[node name="enter" type="Button" parent="KeypadControl/Row4/kpEnter"]
+margin_right = 97.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+shortcut = SubResource( 35 )
+text = "Enter"
+
+[node name="Row5" type="HBoxContainer" parent="KeypadControl"]
+margin_top = 535.0
+margin_right = 400.0
+margin_bottom = 650.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="0" type="Button" parent="KeypadControl/Row5"]
+margin_right = 198.0
+margin_bottom = 115.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+toggle_mode = true
+shortcut = SubResource( 37 )
+text = "0"
+
+[node name="del" type="Button" parent="KeypadControl/Row5"]
+margin_left = 202.0
+margin_right = 299.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 97, 97 )
+size_flags_vertical = 3
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 1, 1, 1, 1 )
+custom_styles/hover = SubResource( 5 )
+custom_styles/pressed = ExtResource( 13 )
+custom_styles/normal = ExtResource( 12 )
+shortcut = SubResource( 39 )
+text = "Del"
+
+[node name="Info" type="Panel" parent="KeypadControl/Row5"]
+margin_left = 303.0
+margin_right = 400.0
+margin_bottom = 115.0
+rect_min_size = Vector2( 97, 97 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="KeypadControl/Row5/Info"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+custom_fonts/font = ExtResource( 17 )
+text = "[+-] pitch
+[0] effects
+[del] n/a
+[ent] n/a
+[/] randomise
+samples"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="s1" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+pitch_scale = 0.8
+bus = "kp1"
+
+[node name="s2" type="AudioStreamPlayer" parent="."]
+pitch_scale = 0.7
+bus = "kp2"
+
+[node name="s3" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+pitch_scale = 0.9
+bus = "kp3"
+
+[node name="s4" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+bus = "kp4"
+
+[node name="s5" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+pitch_scale = 1.2
+bus = "kp5"
+
+[node name="s6" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+pitch_scale = 1.3
+bus = "kp6"
+
+[node name="s7" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+pitch_scale = 1.4
+bus = "kp7"
+
+[node name="s8" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+pitch_scale = 1.5
+bus = "kp8"
+
+[node name="s9" type="AudioStreamPlayer" parent="."]
+volume_db = -5.0
+pitch_scale = 1.6
+bus = "kp9"
+
+[connection signal="value_changed" from="KeypadControl/GainVisualiser/MasterVolume" to="." method="_on_MasterVolume_value_changed"]
+[connection signal="button_down" from="KeypadControl/Row1/Slash" to="." method="_on_Slash_button_down"]
+[connection signal="button_down" from="KeypadControl/Row1/Star" to="." method="_on_Star_button_down"]
+[connection signal="button_down" from="KeypadControl/Row1/Minus" to="." method="_on_Minus_button_down"]
+[connection signal="button_down" from="KeypadControl/Row2/kp7/b7" to="." method="_on_7_button_down"]
+[connection signal="button_down" from="KeypadControl/Row2/kp8/b8" to="." method="_on_8_button_down"]
+[connection signal="button_down" from="KeypadControl/Row2/kp9/b9" to="." method="_on_9_button_down"]
+[connection signal="button_down" from="KeypadControl/Row2/Plus" to="." method="_on_Plus_button_down"]
+[connection signal="button_down" from="KeypadControl/Row3/kp4/b4" to="." method="_on_4_button_down"]
+[connection signal="button_down" from="KeypadControl/Row3/kp5/b5" to="." method="_on_5_button_down"]
+[connection signal="button_down" from="KeypadControl/Row3/kp6/b6" to="." method="_on_6_button_down"]
+[connection signal="button_down" from="KeypadControl/Row4/kp1/b1" to="." method="_on_1_button_down"]
+[connection signal="button_down" from="KeypadControl/Row4/kp2/b2" to="." method="_on_2_button_down"]
+[connection signal="button_down" from="KeypadControl/Row4/kp3/b3" to="." method="_on_3_button_down"]
+[connection signal="toggled" from="KeypadControl/Row5/0" to="." method="_on_0_toggled"]

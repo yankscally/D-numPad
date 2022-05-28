@@ -1,0 +1,85 @@
+[gd_resource type="AudioBusLayout" load_steps=5 format=2]
+
+[ext_resource path="res://delay.tres" type="AudioEffectDelay" id=1]
+
+[sub_resource type="AudioEffectPitchShift" id=1]
+resource_name = "PitchShift"
+oversampling = 9
+fft_size = 0
+
+[sub_resource type="AudioEffectLowPassFilter" id=2]
+resource_name = "LowPassFilter"
+cutoff_hz = 1000.0
+
+[sub_resource type="AudioEffectPitchShift" id=3]
+resource_name = "PitchShift"
+
+[resource]
+bus/0/effect/0/effect = SubResource( 1 )
+bus/0/effect/0/enabled = true
+bus/0/effect/1/effect = ExtResource( 1 )
+bus/0/effect/1/enabled = false
+bus/1/name = "kp1"
+bus/1/solo = false
+bus/1/mute = false
+bus/1/bypass_fx = false
+bus/1/volume_db = 0.0
+bus/1/send = "Master"
+bus/1/effect/0/effect = SubResource( 2 )
+bus/1/effect/0/enabled = true
+bus/2/name = "kp2"
+bus/2/solo = false
+bus/2/mute = false
+bus/2/bypass_fx = false
+bus/2/volume_db = 0.0
+bus/2/send = "Master"
+bus/3/name = "kp3"
+bus/3/solo = false
+bus/3/mute = false
+bus/3/bypass_fx = false
+bus/3/volume_db = -0.00162125
+bus/3/send = "Master"
+bus/4/name = "kp4"
+bus/4/solo = false
+bus/4/mute = false
+bus/4/bypass_fx = false
+bus/4/volume_db = 0.0
+bus/4/send = "Master"
+bus/5/name = "kp5"
+bus/5/solo = false
+bus/5/mute = false
+bus/5/bypass_fx = false
+bus/5/volume_db = 0.0
+bus/5/send = "Master"
+bus/6/name = "kp6"
+bus/6/solo = false
+bus/6/mute = false
+bus/6/bypass_fx = false
+bus/6/volume_db = 0.0
+bus/6/send = "Master"
+bus/7/name = "kp7"
+bus/7/solo = false
+bus/7/mute = false
+bus/7/bypass_fx = false
+bus/7/volume_db = 0.0
+bus/7/send = "Master"
+bus/8/name = "kp8"
+bus/8/solo = false
+bus/8/mute = false
+bus/8/bypass_fx = false
+bus/8/volume_db = 0.0
+bus/8/send = "Master"
+bus/9/name = "kp9"
+bus/9/solo = false
+bus/9/mute = false
+bus/9/bypass_fx = false
+bus/9/volume_db = 0.0
+bus/9/send = "Master"
+bus/10/name = "metro"
+bus/10/solo = false
+bus/10/mute = true
+bus/10/bypass_fx = false
+bus/10/volume_db = 0.0
+bus/10/send = "Master"
+bus/10/effect/0/effect = SubResource( 3 )
+bus/10/effect/0/enabled = true
